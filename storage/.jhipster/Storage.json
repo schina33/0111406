@@ -1,0 +1,37 @@
+{
+  "name": "Storage",
+  "fields": [
+    {
+      "fieldName": "bucketName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "bucketLink",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "configProperties",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200621195319",
+  "entityTableName": "storage",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "storage"
+  ],
+  "microserviceName": "storage"
+}

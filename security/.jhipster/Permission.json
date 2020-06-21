@@ -1,0 +1,29 @@
+{
+  "name": "Permission",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "PermissionList",
+      "fieldValues": "VIEW (View),EDIT (Edit),CHALLENGE (Challenge),SUBSCRIBE (Subscribe),UNSUBSCRIBE (Unsubscribe),IMPORT (Import),APPROVE (Approve),UPDATE_ENTITLEMENTS (Update Entitlements)",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200621194819",
+  "entityTableName": "permission",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "security"
+  ],
+  "microserviceName": "security"
+}

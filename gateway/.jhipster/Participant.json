@@ -1,0 +1,70 @@
+{
+  "name": "Participant",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "username",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String",
+      "javadoc": "While AWS Cognito is being configured",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "twoFactorAuth",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ParticipantType",
+      "fieldValues": "INDIVIDUAL (Individual),BANK (Bank),BUYSIDE (Buyside),THIRD_PARTY_VENDOR (Third Party Vendor),INTER_DEALER_BROKER (Inter Dealer Broker),CUSTODIAN (Custodian)"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "UserStatus",
+      "fieldValues": "PENDING_INVITE (Pending Invite),PENDING_ACCEPT (Pending Accept),PENDING_AGREEMENT (Pending Agreement),ACTIVE (Active),BLOCKED (Blocked),ARCHIVED (Archived)"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200621194419",
+  "entityTableName": "participant",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "user",
+    "security",
+    "marketplace",
+    "storage",
+    "message",
+    "legal",
+    "ledger"
+  ],
+  "microserviceName": "user"
+}

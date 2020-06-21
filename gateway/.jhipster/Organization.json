@@ -1,0 +1,54 @@
+{
+  "name": "Organization",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "minlength"
+      ],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "EntityType",
+      "fieldValues": "BANK (Bank),DATA_PROVIDER (Data Provider)"
+    },
+    {
+      "fieldName": "streetAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200621194119",
+  "javadoc": "ENTITIES\\n___   _  _   _____   ___   _____   ___   ___   ___\\n| __| | \\| | |_   _| |_ _| |_   _| |_ _| | __| / __|\\n| _|  | .` |   | |    | |    | |    | |  | _|  \\__ \\\\n|___| |_|\\_|   |_|   |___|   |_|   |___| |___| |___/",
+  "entityTableName": "organization",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "organization",
+    "marketplace",
+    "storage"
+  ],
+  "microserviceName": "organization"
+}

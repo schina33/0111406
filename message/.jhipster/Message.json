@@ -1,0 +1,69 @@
+{
+  "name": "Message",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "sendDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "readDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "approvalDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "participant",
+      "otherEntityRelationshipName": "message",
+      "relationshipName": "participant",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200621195219",
+  "entityTableName": "message",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "message"
+  ],
+  "microserviceName": "message"
+}

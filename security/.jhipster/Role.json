@@ -1,0 +1,41 @@
+{
+  "name": "Role",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "RoleList",
+      "fieldValues": "VIEWER (Viewer),EDITOR (Editor),APPROVER (Approver),ADMIN (Admin),SUPER_ADMIN (Super Admin)",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "permission",
+      "otherEntityRelationshipName": "role",
+      "relationshipName": "permission",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200621194719",
+  "entityTableName": "role",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "security"
+  ],
+  "microserviceName": "security"
+}

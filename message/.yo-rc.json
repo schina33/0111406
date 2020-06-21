@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "serverPort": "8096",
+    "serviceDiscoveryType": "consul",
+    "skipUserManagement": true,
+    "baseName": "message",
+    "buildTool": "maven",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "skipClient": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "packageName": "com.onecreation.api.message",
+    "packageFolder": "com/onecreation/api/message",
+    "applicationType": "microservice",
+    "jhipsterVersion": "6.9.1",
+    "creationTimestamp": 1592768400652,
+    "clientPackageManager": "npm"
+  },
+  "entities": [
+    "Participant",
+    "Message"
+  ]
+}

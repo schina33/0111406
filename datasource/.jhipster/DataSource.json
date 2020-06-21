@@ -1,0 +1,71 @@
+{
+  "name": "DataSource",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "audit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "storageHashJson",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "DataSourceStatus",
+      "fieldValues": "CREATED (Created),ACTIVE (Active),DELETED (Deleted)"
+    },
+    {
+      "fieldName": "source",
+      "fieldType": "SourceList",
+      "fieldValues": "EXCEL (Excel),API,CSV"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "CategoryList",
+      "fieldValues": "FINANCIAL (Finacial),MEDICAL (Medical),HEALTH (Health),SOCIAL (Social),OTHER (Other)"
+    },
+    {
+      "fieldName": "subCategory",
+      "fieldType": "SubCategoryList",
+      "fieldValues": "FX (FX),VENUE_TRADED_FICC_DATA (Venue Traded FICC Data),INTEREST_RATES (Interest Rates),CREDIT_CURVES (Credit Curves),SWAPTION_VOLATILITY (Swaption Volatility)"
+    },
+    {
+      "fieldName": "templateType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataEncryption",
+      "fieldType": "DataEncryptionList",
+      "fieldValues": "PRIVITAR (Privitar),DUALITY (Duality),FIREBLOCKS (Fireblocks)"
+    },
+    {
+      "fieldName": "json",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200621195119",
+  "entityTableName": "data_source",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "datasource",
+    "marketplace"
+  ],
+  "microserviceName": "datasource"
+}

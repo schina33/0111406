@@ -1,0 +1,56 @@
+{
+  "name": "LegalAgreement",
+  "fields": [
+    {
+      "fieldName": "version",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pdfLink",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "contractHash",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "legalAgreementApprovedDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "expireDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "participant",
+      "otherEntityRelationshipName": "legalAgreement",
+      "relationshipName": "participant",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200621194519",
+  "entityTableName": "legal_agreement",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "legal"
+  ],
+  "microserviceName": "legal"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Department",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "unit",
+      "otherEntityRelationshipName": "department",
+      "relationshipName": "unit",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200621194319",
+  "entityTableName": "department",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "organization"
+  ],
+  "microserviceName": "organization"
+}
