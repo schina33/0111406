@@ -1,0 +1,382 @@
+/** Microservices.
+___  ___ _                                             _                  
+|  \/  |(_)                                           (_)                 
+| .  . | _   ___  _ __   ___   ___   ___  _ __ __   __ _   ___   ___  ___ 
+| |\/| || | / __|| '__| / _ \ / __| / _ \| '__|\ \ / /| | / __| / _ \/ __|
+| |  | || || (__ | |   | (_) |\__ \|  __/| |    \ V / | || (__ |  __/\__ \
+\_|  |_/|_| \___||_|    \___/ |___/ \___||_|     \_/  |_| \___| \___||___/
+
+*/
+
+application {
+  config {
+    baseName gateway,
+    packageName com.onecreation.gateway,
+    applicationType gateway,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    serviceDiscoveryType consul,
+    testFrameworks [protractor],
+    buildTool maven
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName organization,  // Entity is a reserved word for Jhipster. Changed to organization
+    packageName com.onecreation.api.organization,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    enableHibernateCache true,
+    serverPort 8090,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Organization, Unit, Department
+}
+
+application {
+  config {
+    baseName user,
+    packageName com.onecreation.api.user,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    enableHibernateCache true,
+    serverPort 8091,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Participant
+}
+
+application {
+  config {
+    baseName security,
+    packageName com.onecreation.api.security,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    enableHibernateCache true,
+    serverPort 8092,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Participant, Permission, Role, Entitlement
+}
+
+application {
+  config {
+    baseName datasource,
+    packageName com.onecreation.api.datasource,
+    applicationType microservice,
+    authenticationType jwt,
+    devDatabaseType postgresql,
+    prodDatabaseType postgresql,
+    enableHibernateCache true,
+    serverPort 8093,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities DataSource, Template
+}
+
+application {
+  config {
+    baseName marketplace,
+    packageName com.onecreation.api.marketplace,
+    applicationType microservice,
+    authenticationType jwt,
+    devDatabaseType postgresql,
+    prodDatabaseType postgresql,
+    enableHibernateCache true,
+    serverPort 8094,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Organization, Participant, DataSource, App
+}
+
+application {
+  config {
+    baseName storage,
+    packageName com.onecreation.api.storage,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    enableHibernateCache false,
+    serverPort 8095,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Organization, Participant, Storage
+}
+
+application {
+  config {
+    baseName message,
+    packageName com.onecreation.api.message,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    enableHibernateCache false,
+    serverPort 8096,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Participant, Message
+}
+
+application {
+  config {
+    baseName legal,
+    packageName com.onecreation.api.legal,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    enableHibernateCache false,
+    serverPort 8097,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Participant, LegalAgreement
+}
+
+application {
+  config {
+    baseName ledger,
+    packageName com.onecreation.api.legder,
+    applicationType microservice,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    devDatabaseType postgresql,
+    enableHibernateCache false,
+    serverPort 8098,
+    serviceDiscoveryType consul,
+    buildTool maven
+  }
+  entities Participant, Ledger
+}
+
+
+
+/** ENTITIES
+  ___   _  _   _____   ___   _____   ___   ___   ___ 
+ | __| | \| | |_   _| |_ _| |_   _| |_ _| | __| / __|
+ | _|  | .` |   | |    | |    | |    | |  | _|  \__ \
+ |___| |_|\_|   |_|   |___|   |_|   |___| |___| |___/
+
+*/
+                                                  
+entity Organization {
+  id UUID
+  name String required minlength(3)
+  type EntityType
+  streetAddress String
+  postalCode String
+  city String
+  state String
+}
+
+entity Unit {
+  id UUID
+  name String required
+  type String
+}
+
+entity Department {
+  id UUID
+  name String required
+}
+
+enum EntityType {
+    BANK("Bank"), DATA_PROVIDER("Data Provider")
+}
+
+entity Participant {
+  id UUID
+  name String required
+  email String required
+  username String required
+  password String required     /** While AWS Cognito is being configured */
+  twoFactorAuth Boolean
+  type ParticipantType
+  status UserStatus
+}
+
+enum ParticipantType {
+    INDIVIDUAL("Individual"), BANK("Bank"), BUYSIDE("Buyside"), THIRD_PARTY_VENDOR("Third Party Vendor"), INTER_DEALER_BROKER("Inter Dealer Broker"), CUSTODIAN("Custodian")
+}
+
+enum UserStatus {
+    PENDING_INVITE("Pending Invite"), PENDING_ACCEPT("Pending Accept"), PENDING_AGREEMENT("Pending Agreement"), ACTIVE("Active"), BLOCKED("Blocked"), ARCHIVED("Archived")
+}
+
+entity LegalAgreement {
+  id UUID
+  version Integer
+  pdfLink String required
+  contractHash String // Get the DAML initial CreationFunctions contract ID
+  isActive Boolean
+  legalAgreementApprovedDate ZonedDateTime
+  expireDate ZonedDateTime
+}
+
+entity Entitlement {
+  id UUID
+  name String required
+}
+
+entity Role {
+  id UUID
+  name RoleList required
+  active Boolean
+}
+
+enum RoleList {
+    VIEWER("Viewer"), EDITOR("Editor"), APPROVER("Approver"), ADMIN("Admin"), SUPER_ADMIN("Super Admin")
+}
+
+entity Permission {
+  id UUID
+  name PermissionList required  
+}
+
+enum PermissionList {
+    VIEW("View"), EDIT("Edit"), CHALLENGE("Challenge"), SUBSCRIBE("Subscribe"), UNSUBSCRIBE("Unsubscribe"), IMPORT("Import"), APPROVE("Approve"), UPDATE_ENTITLEMENTS("Update Entitlements")
+}
+
+entity App {
+  id UUID
+  name String
+  description String
+  type String
+  logo ImageBlob
+  monthlyCost BigDecimal required min(0)
+  subscribers Integer
+  contributors Integer
+  dataExample String
+  category AppCategory
+  status AppStatus
+}
+
+enum AppCategory {
+    FINANCIAL("Financial"), PERSONAL("Personal") 
+}
+
+enum AppStatus {
+    CREATED("Created"), ACTIVE("Active"), DELETED("Deleted")
+}
+
+entity Template {
+  id UUID
+  name String required
+  storageHashExcel String   // Hash from AWS S3
+  storageLink String
+}
+
+entity DataSource {
+  id UUID
+  name String required
+  audit String
+  storageHashJson String    // Hash from AWS S3
+  status DataSourceStatus
+  source SourceList
+  category CategoryList
+  subCategory SubCategoryList
+  templateType String        // Template Name or Imported or Custom
+  dataEncryption DataEncryptionList
+  json TextBlob // To test storage locally and also in AWS S3
+}
+
+enum DataSourceStatus {
+    CREATED("Created"), ACTIVE("Active"), DELETED("Deleted")
+}
+
+enum SourceList{
+  EXCEL("Excel"), API, CSV 
+} 
+
+enum CategoryList{
+  FINANCIAL("Finacial"), MEDICAL("Medical"), HEALTH("Health"), SOCIAL("Social"), OTHER("Other")
+} 
+
+enum SubCategoryList{
+  FX("FX"), VENUE_TRADED_FICC_DATA("Venue Traded FICC Data"), INTEREST_RATES("Interest Rates"), CREDIT_CURVES("Credit Curves"), SWAPTION_VOLATILITY("Swaption Volatility")
+} 
+
+enum DataEncryptionList{
+  PRIVITAR("Privitar"), DUALITY("Duality"), FIREBLOCKS("Fireblocks")
+} 
+
+entity Message {
+  id UUID
+  title String required
+  message String required
+  type String required
+  status String required
+  sendDate Instant
+  readDate ZonedDateTime
+  approvalDate ZonedDateTime
+}
+
+entity Storage {
+  id UUID
+  bucketName String required
+  bucketLink String
+  configProperties TextBlob  // JSON with the properties
+}
+
+entity Ledger {
+  id UUID
+  ledgerName String required
+  ledgertURL String
+  ledgerConfig TextBlob  // JSON with the properties
+}
+
+relationship ManyToOne {
+  Unit{organization(id)} to Organization,
+  Department{unit(id)} to Unit,
+  Role{permission(id)} to Permission,
+  Entitlement{role(id)} to Role,
+  App{datasource(id)} to DataSource,
+  Message{participant(id)} to Participant,
+  LegalAgreement{participant(id)} to Participant,
+  Entitlement{participant(id)} to Participant,
+  Ledger{participant(id)} to Participant
+}
+
+relationship OneToOne {
+  Template{datasource(id)} to DataSource
+  }
+
+//paginate Entitlement with infinite-scroll
+paginate App with pagination
+//paginate Participant with pagination
+
+microservice Participant with user
+microservice Organization, Unit, Department with organization
+microservice Entitlement, Role, Permission with security
+microservice Template, DataSource with datasource
+microservice App with marketplace
+microservice Storage with storage
+microservice Message with message
+microservice LegalAgreement with legal
+microservice Ledger with ledger
+
+// will be created under 'docker-compose' folder
+deployment {
+  deploymentType docker-compose
+  appsFolders [gateway, organization, user, security, datasource, marketplace, storage, message, legal, ledger]
+  dockerRepositoryName "rosd33"
+  consoleOptions [zipkin]
+}
