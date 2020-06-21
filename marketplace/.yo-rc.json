@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "serverPort": "8094",
+    "serviceDiscoveryType": "consul",
+    "skipUserManagement": true,
+    "baseName": "marketplace",
+    "buildTool": "maven",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "skipClient": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "packageName": "com.onecreation.api.marketplace",
+    "packageFolder": "com/onecreation/api/marketplace",
+    "applicationType": "microservice",
+    "jhipsterVersion": "6.9.1",
+    "creationTimestamp": 1592768400652,
+    "clientPackageManager": "npm"
+  },
+  "entities": [
+    "Organization",
+    "Participant",
+    "DataSource",
+    "App"
+  ]
+}

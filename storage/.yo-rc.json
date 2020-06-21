@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "serverPort": "8095",
+    "serviceDiscoveryType": "consul",
+    "skipUserManagement": true,
+    "baseName": "storage",
+    "buildTool": "maven",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "skipClient": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "packageName": "com.onecreation.api.storage",
+    "packageFolder": "com/onecreation/api/storage",
+    "applicationType": "microservice",
+    "jhipsterVersion": "6.9.1",
+    "creationTimestamp": 1592768400652,
+    "clientPackageManager": "npm"
+  },
+  "entities": [
+    "Organization",
+    "Participant",
+    "Storage"
+  ]
+}

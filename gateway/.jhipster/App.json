@@ -1,0 +1,77 @@
+{
+  "name": "App",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "monthlyCost",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": [
+        "required",
+        "min"
+      ],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "subscribers",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "contributors",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dataExample",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "AppCategory",
+      "fieldValues": "FINANCIAL (Financial),PERSONAL (Personal)"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "AppStatus",
+      "fieldValues": "CREATED (Created),ACTIVE (Active),DELETED (Deleted)"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "dataSource",
+      "otherEntityRelationshipName": "app",
+      "relationshipName": "datasource",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200621194919",
+  "entityTableName": "app",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "marketplace"
+  ],
+  "microserviceName": "marketplace"
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Ledger",
+  "fields": [
+    {
+      "fieldName": "ledgerName",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "ledgertURL",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ledgerConfig",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "participant",
+      "otherEntityRelationshipName": "ledger",
+      "relationshipName": "participant",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200621195419",
+  "entityTableName": "ledger",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "ledger"
+  ],
+  "microserviceName": "ledger"
+}

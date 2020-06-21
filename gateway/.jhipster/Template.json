@@ -1,0 +1,45 @@
+{
+  "name": "Template",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "storageHashExcel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "storageLink",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "dataSource",
+      "otherEntityRelationshipName": "template",
+      "relationshipName": "datasource",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200621195019",
+  "entityTableName": "template",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "datasource"
+  ],
+  "microserviceName": "datasource"
+}

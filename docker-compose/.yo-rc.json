@@ -1,0 +1,27 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": [
+      "gateway",
+      "organization",
+      "user",
+      "security",
+      "datasource",
+      "marketplace",
+      "storage",
+      "message",
+      "legal",
+      "ledger"
+    ],
+    "clusteredDbApps": [],
+    "consoleOptions": [
+      "zipkin"
+    ],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "rosd33",
+    "dockerPushCommand": "docker push"
+  }
+}
